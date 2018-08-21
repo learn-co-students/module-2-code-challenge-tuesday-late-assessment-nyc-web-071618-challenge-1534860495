@@ -1,0 +1,14 @@
+
+<% if @appearance.errors.any? %>
+  <% @appearance.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end%>
+<% end %>
+
+<h1>Create appearance</h1>
+<%= form_for @appearance do |f|%>
+episode:<%= f.collection_select :episode_id, Episode.all, :id, :number %><br/>
+guest:<%= f.collection_select :guest_id, Guest.all, :id, :name %><br/>
+rating:<%= f.number_field :rating %><br/>
+<%= f.submit "Create New Appearance" %>
+<% end %>
